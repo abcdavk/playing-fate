@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfi4ku60doenf"]
+[gd_scene load_steps=7 format=3 uid="uid://dfi4ku60doenf"]
 
 [ext_resource type="Texture2D" uid="uid://cp7jf0btj8hrd" path="res://assets/hand/paper.png" id="1_k7pjy"]
 [ext_resource type="Script" uid="uid://c73eif4wmophe" path="res://scripts/Hand.cs" id="1_m1v21"]
+[ext_resource type="Resource" uid="uid://byw3iw2yfjoai" path="res://resources/database.tres" id="2_kdemd"]
 [ext_resource type="Texture2D" uid="uid://hh1rs67uhspq" path="res://assets/hand/rock.png" id="2_m1v21"]
 [ext_resource type="Texture2D" uid="uid://dsumcdjftv1dg" path="res://assets/hand/scissor.png" id="3_kdemd"]
 
@@ -22,7 +23,7 @@ animations = [{
 "speed": 3.0
 }]
 
-[node name="Hand" type="Control" node_paths=PackedStringArray("Animated", "TextureRect")]
+[node name="Hand" type="Control" node_paths=PackedStringArray("AnimatedSprite", "TextureRect")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,7 +31,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m1v21")
-Animated = NodePath("Animated")
+Database = ExtResource("2_kdemd")
+AnimatedSprite = NodePath("Animated")
 TextureRect = NodePath("TextureRect")
 
 [node name="Animated" type="AnimatedSprite2D" parent="."]

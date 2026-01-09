@@ -4,10 +4,13 @@ using System;
 [GlobalClass]
 public partial class Database : Resource
 {
+	[Export] public Texture2D[] HandTexture;
+
+	// Event listener section
 	// Csharp forces me to make a very long name idk why
 	[Signal] public delegate void SceneNumberChangedEventHandler(int value);
-    [Signal] public delegate void PlayerHandGestureChangedEventHandler(int value);
-    [Signal] public delegate void EnemyHandGestureChangedEventHandler(int value);
+	[Signal] public delegate void PlayerHandGestureChangedEventHandler(int value);
+	[Signal] public delegate void EnemyHandGestureChangedEventHandler(int value);
 
 	private int _sceneNumber;
 	private int _playerHandGesture;
@@ -25,27 +28,27 @@ public partial class Database : Resource
 		}
 	}
 
-    [Export] public int PlayerHandGesture
-    {
-        get => _playerHandGesture;
-        set
-        {
-            if (_playerHandGesture == value) return;
-            _playerHandGesture = value;
+	[Export] public int PlayerHandGesture
+	{
+		get => _playerHandGesture;
+		set
+		{
+			if (_playerHandGesture == value) return;
+			_playerHandGesture = value;
 
-            EmitSignal(SignalName.PlayerHandGestureChanged, value);
-        }
-    }
+			EmitSignal(SignalName.PlayerHandGestureChanged, value);
+		}
+	}
 
-    [Export] public int EnemyHandGesture
-    {
-        get => _enemyHandGesture;
-        set
-        {
-            if (_enemyHandGesture == value) return;
-            _enemyHandGesture = value;
+	[Export] public int EnemyHandGesture
+	{
+		get => _enemyHandGesture;
+		set
+		{
+			if (_enemyHandGesture == value) return;
+			_enemyHandGesture = value;
 
-            EmitSignal(SignalName.EnemyHandGestureChanged, value);
-        }
-    }
+			EmitSignal(SignalName.EnemyHandGestureChanged, value);
+		}
+	}
 }

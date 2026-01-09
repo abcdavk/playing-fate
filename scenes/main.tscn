@@ -96,6 +96,16 @@ offset_bottom = 296.0
 rotation = 0.49170285
 scale = Vector2(2, 2)
 
+[node name="Enemy" parent="Hands" instance=ExtResource("5_tefeu")]
+layout_mode = 1
+offset_left = 1103.9999
+offset_top = 304.00003
+offset_right = 1103.9999
+offset_bottom = 304.00003
+rotation = -6.844018
+scale = Vector2(2, 2)
+Flip = true
+
 [node name="Foreground" parent="." instance=ExtResource("2_0wfyh")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
