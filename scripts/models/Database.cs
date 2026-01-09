@@ -8,7 +8,13 @@ public partial class Database : Resource
 	[Signal]
 	public delegate void SceneNumberChangedEventHandler(int value);
 
+    [Signal]
+    public delegate void PlayerHandGestureChangedEventHandler(int value);
+    public delegate void EnemyHandGestureChangedEventHandler(int value);
+
 	private int _sceneNumber;
+	private int _playerHandGesture;
+	private int _enemyHandGesture;
 	[Export]
 	public int SceneNumber
 	{
@@ -22,4 +28,30 @@ public partial class Database : Resource
 			EmitSignal(SignalName.SceneNumberChanged, value);
 		}
 	}
+
+    [Export]
+    public int PlayerHandGesture
+    {
+        get => _playerHandGesture;
+        set
+        {
+            if (_playerHandGesture == value) return;
+            _playerHandGesture = value;
+
+            EmitSignal(SignalName.PlayerHandGestureChanged, value);
+        }
+    }
+
+    [Export]
+    public int EnemyHandGesture
+    {
+        get => _enemyHandGesture;
+        set
+        {
+            if (_enemyHandGesture == value) return;
+            _enemyHandGesture = value;
+
+            EmitSignal(SignalName.PlayerHandGestureChanged, value);
+        }
+    }
 }
