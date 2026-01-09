@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://ejhty8ihc5qj"]
+
+[ext_resource type="Shader" uid="uid://cux4uwbxm5g8b" path="res://assets/shaders/doodle.gdshader" id="1_t7feq"]
+
+[sub_resource type="Gradient" id="Gradient_5gpx4"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ttsrt"]
+gradient = SubResource("Gradient_5gpx4")
+fill_from = Vector2(0, 1)
+
+[resource]
+shader = ExtResource("1_t7feq")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 0.18
+shader_parameter/fps = 3.0
+shader_parameter/noise = SubResource("GradientTexture2D_ttsrt")
+shader_parameter/amplitude = 10.0
+shader_parameter/speed = 2.0
+shader_parameter/horizontal_anim = true
+shader_parameter/vertical_anim = true
