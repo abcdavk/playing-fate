@@ -3,13 +3,13 @@ using System;
 
 public partial class Main : Node2D
 {
-	private Control Dialog;
 	private AnimationPlayer AnimationPlayer;
+	[Export] private Control Dialog;
 	[Export] private Database Database;
 
 	public override void _Ready()
 	{
-		Dialog = GetNode<Control>("Dialog");
+		// Dialog = GetNode<Control>("Dialog");
 		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
 		// Add OnSceneChange into the event listener
