@@ -4,12 +4,13 @@ using System;
 public partial class Main : Node2D
 {
 	private AnimationPlayer AnimationPlayer;
-	[Export] private Control Dialog;
+	[Export] private Control MainMenu;
+	[Export] private Control HandSelection;
 	[Export] private Database Database;
 
 	public override void _Ready()
 	{
-		// Dialog = GetNode<Control>("Dialog");
+		// MainMenu = GetNode<Control>("MainMenu");
 		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
 		// Add OnSceneChange into the event listener
@@ -25,7 +26,8 @@ public partial class Main : Node2D
 			
 			// Wait 2 sec before deleting child
 			await ToSignal(GetTree().CreateTimer(2.0), "timeout");
-			Dialog.QueueFree();			
+			MainMenu.QueueFree();
+			HandSelection.Visible = true;			
 		}
 	}
 }
