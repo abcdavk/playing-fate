@@ -7,7 +7,7 @@ public partial class MainMenuButton : VBoxContainer
 	private Button _settingsButton;
 	private Button _exitButton;
 
-	private Database db;
+	[Export] public Database Database;
 	public override void _Ready()
 	{
 		_playButton = GetNode<Button>("Play");
@@ -17,8 +17,6 @@ public partial class MainMenuButton : VBoxContainer
 		_playButton.Pressed += HandlePressPlayButton;
 		_settingsButton.Pressed += HandlePressSettingsButton;
 		_exitButton.Pressed += HandlePressExitButton;
-
-		db = GD.Load<Database>("res://resources/database.tres");
 	}
 	public override void _Process(double delta)
 	{
@@ -26,6 +24,7 @@ public partial class MainMenuButton : VBoxContainer
 
 	public void HandlePressPlayButton()
 	{
+		Database.SceneNumber += 1; 
 		GD.Print("Play");
 	}
 

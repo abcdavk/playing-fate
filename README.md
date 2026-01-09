@@ -1,5 +1,6 @@
 ### Playing Fate
 
+
 Can you beat your fate?
 
 <details>
