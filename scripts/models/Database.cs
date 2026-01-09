@@ -5,18 +5,14 @@ using System;
 public partial class Database : Resource
 {
 	// Csharp forces me to make a very long name idk why
-	[Signal]
-	public delegate void SceneNumberChangedEventHandler(int value);
-
-    [Signal]
-    public delegate void PlayerHandGestureChangedEventHandler(int value);
-    public delegate void EnemyHandGestureChangedEventHandler(int value);
+	[Signal] public delegate void SceneNumberChangedEventHandler(int value);
+    [Signal] public delegate void PlayerHandGestureChangedEventHandler(int value);
+    [Signal] public delegate void EnemyHandGestureChangedEventHandler(int value);
 
 	private int _sceneNumber;
 	private int _playerHandGesture;
 	private int _enemyHandGesture;
-	[Export]
-	public int SceneNumber
+	[Export] public int SceneNumber
 	{
 		get => _sceneNumber;
 		set
@@ -29,8 +25,7 @@ public partial class Database : Resource
 		}
 	}
 
-    [Export]
-    public int PlayerHandGesture
+    [Export] public int PlayerHandGesture
     {
         get => _playerHandGesture;
         set
@@ -42,8 +37,7 @@ public partial class Database : Resource
         }
     }
 
-    [Export]
-    public int EnemyHandGesture
+    [Export] public int EnemyHandGesture
     {
         get => _enemyHandGesture;
         set
@@ -51,7 +45,7 @@ public partial class Database : Resource
             if (_enemyHandGesture == value) return;
             _enemyHandGesture = value;
 
-            EmitSignal(SignalName.PlayerHandGestureChanged, value);
+            EmitSignal(SignalName.EnemyHandGestureChanged, value);
         }
     }
 }
