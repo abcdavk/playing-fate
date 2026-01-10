@@ -73,24 +73,5 @@ public partial class Hand : Control
 	{
 		if (IsEnemy)
 			TextureRect.Texture = Database.HandTexture[enemyHandGesture];
-
-		GD.Print("Player win?: ", IsPlayerWin());
-	}
-
-	private bool? IsPlayerWin()
-	{
-		int player = Database.PlayerHandGesture;
-		int enemy  = Database.EnemyHandGesture;
-
-		// draw
-		if (player == enemy)
-			return null;
-			
-		// rock <- paper <- scissor <- rock <- ...
-		// example:
-		// player = 1 (rock), enemy = 2 (paper)
-		// (1 - 2 + 3) % 3 == 1
-		// 2 % 3 != 1
-		return (player - enemy + 3) % 3 == 1;
 	}
 }
