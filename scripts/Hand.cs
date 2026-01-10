@@ -31,6 +31,10 @@ public partial class Hand : Control
 		OnHandModeChange(_animated);
 		Database.PlayerHandGestureChanged += OnPlayerHandChanged;
 		OnPlayerHandChanged(Database.PlayerHandGesture);
+		Database.OnEndTurn += OnEndTurn;
+		OnEndTurn(Database.EndTurn);
+		Database.EnemyHandGestureChanged += OnEnemyHandChanged;
+		OnEnemyHandChanged(Database.EnemyHandGesture);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,5 +54,24 @@ public partial class Hand : Control
 	{
 		if (!IsEnemy)
 			TextureRect.Texture = Database.HandTexture[playerHandGesture];
+	}
+
+	private async void OnEndTurn(bool endTurn)
+	{
+		if (endTurn)
+		{
+			RandomNumberGenerator rng = new RandomNumberGenerator();
+			rng.Randomize();
+			int randomHand = rng.RandiRange(0, 2);
+			Database.EnemyHandGesture = randomHand;
+		}
+	}
+
+	private void OnEnemyHandChanged(int enemyHandGesture)
+	{
+		if (IsEnemy)
+		{
+			TextureRect.Texture = Database.HandTexture[enemyHandGesture];
+		}
 	}
 }

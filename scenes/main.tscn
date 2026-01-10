@@ -69,10 +69,11 @@ _data = {
 &"disolve_anim": SubResource("Animation_jyhfs")
 }
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("MainMenu", "HandSelection")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("MainMenu", "HandSelection", "EndTurn")]
 script = ExtResource("1_jyhfs")
 MainMenu = NodePath("MainMenu")
 HandSelection = NodePath("HandSelection")
+EndTurn = NodePath("EndTurn")
 Database = ExtResource("2_tbgi4")
 
 [node name="Background" parent="." instance=ExtResource("1_o5qli")]

@@ -6,6 +6,7 @@ public partial class Main : Node2D
 	private AnimationPlayer AnimationPlayer;
 	[Export] private Control MainMenu;
 	[Export] private Control HandSelection;
+	[Export] private Button EndTurn;
 	[Export] private Database Database;
 
 	public override void _Ready()
@@ -27,7 +28,8 @@ public partial class Main : Node2D
 			// Wait 2 sec before deleting child
 			await ToSignal(GetTree().CreateTimer(2.0), "timeout");
 			MainMenu.QueueFree();
-			HandSelection.Visible = true;			
+			HandSelection.Visible = true;		
+			EndTurn.Visible = true;
 		}
 	}
 }
