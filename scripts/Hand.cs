@@ -7,7 +7,7 @@ public partial class Hand : Control
 	[Export] public AnimatedSprite2D AnimatedSprite;
 	[Export] public TextureRect TextureRect;
 	[Export] public bool Flip;
-
+	[Export] public bool IsEnemy;
 	[Signal] public delegate void HandModeChangedEventHandler(bool value);
 	private bool _animated;
 
@@ -48,6 +48,7 @@ public partial class Hand : Control
 
 	public void OnPlayerHandChanged(int playerHandGesture)
 	{
-		TextureRect.Texture = Database.HandTexture[playerHandGesture];
+		if (!IsEnemy)
+			TextureRect.Texture = Database.HandTexture[playerHandGesture];
 	}
 }
