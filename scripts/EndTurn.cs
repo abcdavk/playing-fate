@@ -8,7 +8,6 @@ public partial class EndTurn : Button
 	public override void _Ready()
 	{
 		Pressed += OnButtonPressed;
-		OnButtonPressed();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,6 +17,7 @@ public partial class EndTurn : Button
 
 	private void OnButtonPressed()
 	{
+		GD.Print("Pressed button endturn");
 		Database.EndTurn = true;
 	}
 }
