@@ -8,7 +8,6 @@ public partial class HandSelection : Control
 	public override void _Ready()
 	{
 		VisibilityChanged += _OnVisibilityChanged;
-		_OnVisibilityChanged();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

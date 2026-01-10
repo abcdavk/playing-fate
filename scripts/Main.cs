@@ -16,7 +16,6 @@ public partial class Main : Node2D
 
 		// Add OnSceneChange into the event listener
 		Database.SceneNumberChanged += OnSceneChanged;
-		OnSceneChanged(Database.SceneNumber);
 	}
 
 	private async void OnSceneChanged(int sceneNumber)
