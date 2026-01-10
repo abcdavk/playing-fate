@@ -11,12 +11,14 @@ public partial class Database : Resource
 	[Signal] public delegate void SceneNumberChangedEventHandler(int value);
 	[Signal] public delegate void PlayerHandGestureChangedEventHandler(int value);
 	[Signal] public delegate void EnemyHandGestureChangedEventHandler(int value);
-	[Signal] public delegate void OnEndTurnEventHandler(bool value);
+	[Signal] public delegate void OnEndTurnBeforeEventHandler(bool value);
+	[Signal] public delegate void OnEndTurnAfterEventHandler(bool value);
 
 	private int _sceneNumber;
 	private int _playerHandGesture;
 	private int _enemyHandGesture;
-	private bool _endTurn;
+	private bool _endTurnBefore;
+	private bool _endTurnAfter;
 	[Export] public int SceneNumber
 	{
 		get => _sceneNumber;
@@ -54,15 +56,15 @@ public partial class Database : Resource
 		}
 	}
 
-	[Export] public bool EndTurn
+	[Export] public bool EndTurnBefore
 	{
-		get => _endTurn;
+		get => _endTurnBefore;
 		set
 		{
-			if (_endTurn == value) return;
-			_endTurn = value;
-
-			EmitSignal(SignalName.OnEndTurn, value);
+			if (!value) return;
+			
+			_endTurnBefore = value;
+			EmitSignal(SignalName.OnEndTurnBefore, value);
 		}
 	}
 }

@@ -30,7 +30,7 @@ public partial class Hand : Control
 		HandModeChanged += OnHandModeChange;
 		OnHandModeChange(_animated);
 		Database.PlayerHandGestureChanged += OnPlayerHandChanged;
-		Database.OnEndTurn += OnEndTurn;
+		Database.OnEndTurnBefore += OnEndTurnBefore;
 		Database.EnemyHandGestureChanged += OnEnemyHandChanged;
 	}
 
@@ -53,22 +53,24 @@ public partial class Hand : Control
 			TextureRect.Texture = Database.HandTexture[playerHandGesture];
 	}
 
-	private async void OnEndTurn(bool endTurn)
+	private async void OnEndTurnBefore(bool endTurn)
 	{
 		if (endTurn)
 		{
+			Animated = true;
+			await ToSignal(GetTree().CreateTimer(2), "timeout");
+			Animated = false;
 			RandomNumberGenerator rng = new RandomNumberGenerator();
 			rng.Randomize();
 			int randomHand = rng.RandiRange(0, 2);
 			Database.EnemyHandGesture = randomHand;
+			Database.EndTurnBefore = false;
 		}
 	}
 
 	private void OnEnemyHandChanged(int enemyHandGesture)
 	{
 		if (IsEnemy)
-		{
 			TextureRect.Texture = Database.HandTexture[enemyHandGesture];
-		}
 	}
 }

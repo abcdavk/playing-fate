@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://daexlaf484m6f"]
+[gd_scene load_steps=11 format=3 uid="uid://daexlaf484m6f"]
 
 [ext_resource type="Script" uid="uid://b3psqy647r4ye" path="res://scripts/Main.cs" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://ce5w12diq3sbx" path="res://scenes/background.tscn" id="1_o5qli"]
@@ -7,7 +7,6 @@
 [ext_resource type="Resource" uid="uid://byw3iw2yfjoai" path="res://resources/database.tres" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dfi4ku60doenf" path="res://scenes/hand.tscn" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://bmf78c0kk4wpf" path="res://scenes/hand_selection.tscn" id="6_o6xl0"]
-[ext_resource type="Script" uid="uid://6drrto11udv2" path="res://scripts/EndTurn.cs" id="7_tipki"]
 
 [sub_resource type="Animation" id="Animation_tbgi4"]
 length = 0.001
@@ -69,11 +68,10 @@ _data = {
 &"disolve_anim": SubResource("Animation_jyhfs")
 }
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("MainMenu", "HandSelection", "EndTurn")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("MainMenu", "HandSelection")]
 script = ExtResource("1_jyhfs")
 MainMenu = NodePath("MainMenu")
 HandSelection = NodePath("HandSelection")
-EndTurn = NodePath("EndTurn")
 Database = ExtResource("2_tbgi4")
 
 [node name="Background" parent="." instance=ExtResource("1_o5qli")]
@@ -117,17 +115,6 @@ offset_left = 280.0
 offset_top = 384.0
 offset_right = 280.0
 offset_bottom = 384.0
-
-[node name="EndTurn" type="Button" parent="."]
-visible = false
-offset_left = 552.0
-offset_top = 384.0
-offset_right = 630.0
-offset_bottom = 415.0
-scale = Vector2(1.0365297, 1)
-text = "End Turn"
-script = ExtResource("7_tipki")
-Database = ExtResource("2_tbgi4")
 
 [node name="Foreground" parent="." instance=ExtResource("2_0wfyh")]
 

@@ -18,6 +18,6 @@ public partial class EndTurn : Button
 	private void OnButtonPressed()
 	{
 		GD.Print("Pressed button endturn");
-		Database.EndTurn = true;
+		Database.EndTurnBefore = true;
 	}
 }

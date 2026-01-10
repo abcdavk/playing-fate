@@ -1,10 +1,50 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmf78c0kk4wpf"]
+[gd_scene load_steps=9 format=3 uid="uid://bmf78c0kk4wpf"]
 
 [ext_resource type="Script" uid="uid://br43qxkoxb8ss" path="res://scripts/HandSelection.cs" id="1_fmeqg"]
 [ext_resource type="Script" uid="uid://d4acevueuonl5" path="res://scripts/HandSelectionButtons.cs" id="2_uvve1"]
 [ext_resource type="Resource" uid="uid://byw3iw2yfjoai" path="res://resources/database.tres" id="3_mk0qo"]
+[ext_resource type="Script" uid="uid://6drrto11udv2" path="res://scripts/EndTurn.cs" id="4_y0my0"]
 
 [sub_resource type="Theme" id="Theme_y0my0"]
+
+[sub_resource type="Animation" id="Animation_nyyqs"]
+resource_name = "writer_anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.732081, 1),
+"update": 0,
+"values": [Vector2(0, 101), Vector2(192, 101)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1.9318726),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EndTurn:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2.0000002, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_fmeqg"]
 length = 0.001
@@ -32,32 +72,17 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_nyyqs"]
-resource_name = "writer_anim"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(2.732081, 1),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EndTurn:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 101), Vector2(192, 101)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.23333333),
-"transitions": PackedFloat32Array(1, 1.9318726),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fmeqg"]
@@ -108,6 +133,16 @@ theme = SubResource("Theme_y0my0")
 text = "[3] Scissor"
 alignment = 0
 clip_text = true
+
+[node name="EndTurn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 334.0
+offset_bottom = 31.0
+scale = Vector2(1.0365297, 1)
+text = "End Turn"
+script = ExtResource("4_y0my0")
+Database = ExtResource("3_mk0qo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
