@@ -15,6 +15,7 @@ public partial class Main : Node2D
 
 		// Add OnSceneChange into the event listener
 		Database.SceneNumberChanged += OnSceneChanged;
+		Database.OnEndTurnAfter += OnEndTurnAfter;
 	}
 
 	private async void OnSceneChanged(int sceneNumber)
@@ -28,5 +29,13 @@ public partial class Main : Node2D
 			MainMenu.QueueFree();
 			HandSelection.Visible = true;
 		}
+	}
+
+	private async void OnEndTurnAfter(bool endTurn)
+	{
+		AnimationPlayer.Play("hand_selection_disolve");
+		HandSelection.MouseFilter = Control.MouseFilterEnum.Ignore;
+		await ToSignal(GetTree().CreateTimer(1.0), "timeout");
+		HandSelection.Visible = false;
 	}
 }

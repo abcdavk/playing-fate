@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://daexlaf484m6f"]
+[gd_scene load_steps=12 format=3 uid="uid://daexlaf484m6f"]
 
 [ext_resource type="Script" uid="uid://b3psqy647r4ye" path="res://scripts/Main.cs" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://ce5w12diq3sbx" path="res://scenes/background.tscn" id="1_o5qli"]
@@ -34,6 +34,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HandSelection:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(280, 384)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HandSelection:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 resource_name = "disolve_anim"
@@ -62,10 +86,38 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_o6xl0"]
+resource_name = "hand_selection_disolve"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandSelection:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(3.482202, 3.4821992),
+"update": 0,
+"values": [Vector2(280, 384), Vector2(280, 720)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandSelection:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.8284268, 0.49999976),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tefeu"]
 _data = {
 &"RESET": SubResource("Animation_tbgi4"),
-&"disolve_anim": SubResource("Animation_jyhfs")
+&"disolve_anim": SubResource("Animation_jyhfs"),
+&"hand_selection_disolve": SubResource("Animation_o6xl0")
 }
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("MainMenu", "HandSelection")]

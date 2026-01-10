@@ -67,4 +67,15 @@ public partial class Database : Resource
 			EmitSignal(SignalName.OnEndTurnBefore, value);
 		}
 	}
+	[Export] public bool EndTurnAfter
+	{
+		get => _endTurnAfter;
+		set
+		{
+			if (value) return;
+			
+			_endTurnAfter = value;
+			EmitSignal(SignalName.OnEndTurnAfter, value);
+		}
+	}
 }
