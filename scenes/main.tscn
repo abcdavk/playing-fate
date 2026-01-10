@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://daexlaf484m6f"]
+[gd_scene load_steps=13 format=3 uid="uid://daexlaf484m6f"]
 
 [ext_resource type="Script" uid="uid://b3psqy647r4ye" path="res://scripts/Main.cs" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://ce5w12diq3sbx" path="res://scenes/background.tscn" id="1_o5qli"]
@@ -113,19 +113,49 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_tipki"]
+resource_name = "hand_selection_appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandSelection:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(3.482202, 1),
+"update": 0,
+"values": [Vector2(280, 730), Vector2(280, 384)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandSelection:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.23333333, 1),
+"transitions": PackedFloat32Array(5.8563437, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tefeu"]
 _data = {
 &"RESET": SubResource("Animation_tbgi4"),
 &"disolve_anim": SubResource("Animation_jyhfs"),
+&"hand_selection_appear": SubResource("Animation_tipki"),
 &"hand_selection_disolve": SubResource("Animation_o6xl0")
 }
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("MainMenu", "HandSelection", "Result")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("MainMenu", "HandSelection", "Result", "ResultText", "RematchButton")]
 script = ExtResource("1_jyhfs")
 MainMenu = NodePath("MainMenu")
 HandSelection = NodePath("HandSelection")
 Database = ExtResource("2_tbgi4")
-Result = NodePath("Result")
+Result = NodePath("Results")
+ResultText = NodePath("Results/Text")
+RematchButton = NodePath("Results/Rematch")
 
 [node name="Background" parent="." instance=ExtResource("1_o5qli")]
 
@@ -169,21 +199,38 @@ offset_top = 384.0
 offset_right = 280.0
 offset_bottom = 384.0
 
-[node name="Result" type="RichTextLabel" parent="."]
+[node name="Results" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Text" type="RichTextLabel" parent="Results"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 448.0
-offset_top = 256.0
-offset_right = 832.0
-offset_bottom = 376.0
+offset_left = 308.0
+offset_top = 236.0
+offset_right = 940.0
+offset_bottom = 356.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/normal_font_size = 86
+text = "ssss"
 horizontal_alignment = 1
+
+[node name="Rematch" type="Button" parent="Results"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 384.0
+offset_right = 677.0
+offset_bottom = 415.0
+text = "Rematch"
 
 [node name="Foreground" parent="." instance=ExtResource("2_0wfyh")]
 offset_left = -16.0
