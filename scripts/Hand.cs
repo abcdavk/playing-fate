@@ -29,6 +29,8 @@ public partial class Hand : Control
 
 		HandModeChanged += OnHandModeChange;
 		OnHandModeChange(_animated);
+		Database.PlayerHandGestureChanged += OnPlayerHandChanged;
+		OnPlayerHandChanged(Database.PlayerHandGesture);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,5 +44,10 @@ public partial class Hand : Control
 	{
 		AnimatedSprite.Visible = animated;
 		TextureRect.Visible = !animated;
+	}
+
+	public void OnPlayerHandChanged(int playerHandGesture)
+	{
+		TextureRect.Texture = Database.HandTexture[playerHandGesture];
 	}
 }
