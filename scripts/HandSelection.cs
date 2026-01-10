@@ -16,7 +16,7 @@ public partial class HandSelection : Control
 	{
 	}
 
-	public void _OnVisibilityChanged()
+	private void _OnVisibilityChanged()
 	{
 		AnimationPlayer.Play("writer_anim");
 	}

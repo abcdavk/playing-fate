@@ -40,13 +40,13 @@ public partial class Hand : Control
 		TextureRect.FlipH = Flip;
 	}
 
-	public void OnHandModeChange(bool animated)
+	private void OnHandModeChange(bool animated)
 	{
 		AnimatedSprite.Visible = animated;
 		TextureRect.Visible = !animated;
 	}
 
-	public void OnPlayerHandChanged(int playerHandGesture)
+	private void OnPlayerHandChanged(int playerHandGesture)
 	{
 		if (!IsEnemy)
 			TextureRect.Texture = Database.HandTexture[playerHandGesture];

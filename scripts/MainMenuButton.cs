@@ -22,18 +22,18 @@ public partial class MainMenuButton : VBoxContainer
 	{
 	}
 
-	public void HandlePressPlayButton()
+	private void HandlePressPlayButton()
 	{
 		Database.SceneNumber += 1; 
 		GD.Print("Play");
 	}
 
-	public void HandlePressSettingsButton()
+	private void HandlePressSettingsButton()
 	{
 		GD.Print("Settings");
 	}
 
-	public void HandlePressExitButton()
+	private void HandlePressExitButton()
 	{
 		GD.Print("Exit");
 	}

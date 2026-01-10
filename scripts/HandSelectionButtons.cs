@@ -18,7 +18,7 @@ public partial class HandSelectionButtons : VBoxContainer
 
 	}
 
-	public void OnButtonPressed(int id, Button button)
+	private void OnButtonPressed(int id, Button button)
 	{
 		Database.PlayerHandGesture = id;
 	}
